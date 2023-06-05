@@ -23,7 +23,7 @@ public class EmailServiceApp {
 		System.out.println("2. Admin");
 		System.out.println("3. Human Resource");
 		System.out.println("4. Legal");
-		String department = "";
+		String department = null;
 		
 		int option = sc.nextInt();
 
@@ -50,10 +50,15 @@ public class EmailServiceApp {
 				break;
 		}
 		
-		String generatedEmail = service.generateEmailAddress(employee, department);
-		String generatedPassword = service.generatePassword();
-		service.showCredentials(employee, department);
-		sc.close();
+		if(department!= null) 	{
+					String generatedEmail = service.generateEmailAddress(employee, department);
+					String generatedPassword = service.generatePassword();
+					service.showCredentials(employee, department);
+				}
+				else {
+					System.out.println("Please enter department again...");	
+				}
+				sc.close();
 	}
 }
 
