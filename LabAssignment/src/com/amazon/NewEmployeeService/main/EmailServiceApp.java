@@ -18,12 +18,15 @@ public class EmailServiceApp {
 		String ln = sc.next();
 		Employee employee = new Employee(fn, ln);
 		
+		String department = null;
+		
+		while(department == null) {
 		System.out.println("Please enter the department from the following");
 		System.out.println("1. Technical");
 		System.out.println("2. Admin");
 		System.out.println("3. Human Resource");
 		System.out.println("4. Legal");
-		String department = null;
+		
 		
 		int option = sc.nextInt();
 
@@ -48,17 +51,18 @@ public class EmailServiceApp {
 			default:
 				System.out.println("Please enter valid option");
 				break;
-		}
-		
-		if(department!= null) 	{
+		}	
+	}
+			
 					String generatedEmail = service.generateEmailAddress(employee, department);
 					String generatedPassword = service.generatePassword();
 					service.showCredentials(employee, department);
-				}
-				else {
-					System.out.println("Please enter department again...");	
-				}
+				
 				sc.close();
 	}
 }
+
+
+
+		
 
